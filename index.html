@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Guess the Word</title>
     <link href="style.css" rel="stylesheet">
+    <style>
+        .red{
+            background-color: #ff8c76;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -68,6 +73,7 @@
     const textBox = document.querySelector('input');
     const submitButton = document.querySelector('button');
     const gameOverMessage = document.getElementById('game-over');
+    const content = document.querySelector('.content');
 
     let currentGuessNumber = 0
 
@@ -76,7 +82,8 @@
         if(guess.length !== 5){
             return //don't accept words that aren't 5 letters long
         }
-        //todo clear the textbox once you hit submit
+        //clear the textbox once you hit submit
+        textBox.value = "";
 
         //render guess to the board
         writeGuess(guess) //todo create this function
@@ -88,6 +95,7 @@
             gameOverMessage.textContent = 'You won!!!';
             submitButton.remove();
             textBox.remove();
+            content.classList.add('green');
             return
         }
 
@@ -96,8 +104,10 @@
             gameOverMessage.textContent = `You lost :( The word was ${answer}.`;
             submitButton.remove();
             textBox.remove();
+            content.classList.add('red');
             return
         }
+
     })
 
     function writeGuess(guess){
