@@ -6,10 +6,13 @@
     <link href="style.css" rel="stylesheet">
     <style>
         .red{
-            background-color: #ff8c76;
+            background-color: #d8130f;
         }
         .green{
             background-color: #1aff7d;
+        }
+        .grey{
+            background-color: #d7d5d8
         }
 
     </style>
@@ -72,7 +75,9 @@
     </div>
 </body>
 <script>
-    const answer = "CRANE"; //todo make this random word
+    const randAnswers = ["CRANE", "CLASS", "MINDS", "CLOWN", "BOARD", "EARTH", "AHEAD", "ARRAY"];
+    let answer = randAnswers[Math.floor(Math.random() * randAnswers.length)];
+    //const answer = "CRANE"; //todo make this random word
     const board = document.getElementById('board');
     const textBox = document.querySelector('input');
     const submitButton = document.querySelector('button');
@@ -90,7 +95,7 @@
         textBox.value = "";
 
         //render guess to the board
-        writeGuess(guess) //todo create this function
+        writeGuess(guess)
 
         currentGuessNumber++
 
@@ -111,7 +116,6 @@
             content.classList.add('red');
             return
         }
-
     })
 
     function writeGuess(guess){
